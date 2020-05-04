@@ -19,3 +19,9 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 - Criação da View de Movimentação
 - Validação básicas com a library 'form_validation'
 - Criação de rotas para os métodos de Movimentação
+
+### Banco de dados MySql
+
+- Criação do banco de dados 
+- Criação da tabela de movimentações
+- Configuração do application/config/database.php para conectar no banco de dados criado
