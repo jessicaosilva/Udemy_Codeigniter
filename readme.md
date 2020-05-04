@@ -12,3 +12,10 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
  chmod 755 .htaccess
 
 ````
+
+### Movimentação Financeira
+
+- Criação da Controller de Movimentação
+- Criação da View de Movimentação
+- Validação básicas com a library 'form_validation'
+- Criação de rotas para os métodos de Movimentação
