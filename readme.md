@@ -29,7 +29,7 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 
 ### Crud de movimentação
 
-## CREATE
+#### CREATE
 
 - Criação do model de movimentação, com a função de inserir uma movimentação, com os dados submetidos pelo formulário.
 - Usando função date do php com configuração do fuso horário.
