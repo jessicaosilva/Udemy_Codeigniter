@@ -8,7 +8,7 @@ class MovimentacaoController extends CI_Controller {
         return $this->load->view('movimentacao/cadastrar_movimentacao');
     }
 
-    public function inseriroMovimentacao(){
+    public function inserirMovimentacao(){
         $this->load->library('form_validation');
         $this->form_validation->set_rules('descricao', 'Descrição', 'required');
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
@@ -18,7 +18,17 @@ class MovimentacaoController extends CI_Controller {
             return $this->load->view('movimentacao/cadastrar_movimentacao');
 
         }else{
-            echo 'Válido';
+            $this->load->model('Movimentacao', 'movimentacao', true);
+
+            $data =[
+                'descricao'=> $this->input->post('descricao'),
+                'tipo'     => $this->input->post('tipo'),
+                'valor'    => $this->input->post('valor'),
+                'data'     => $this->input->post('data'),
+                'datahora_cadastro'     => date('Y-m-d H:i:s'),
+            ];
+            $this->movimentacao->insert($data);
+            echo 'dados inseridos com sucesso.';
         }
     }
 }

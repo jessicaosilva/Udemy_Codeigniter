@@ -25,3 +25,12 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 - Criação do banco de dados 
 - Criação da tabela de movimentações
 - Configuração do application/config/database.php para conectar no banco de dados criado
+
+
+### Crud de movimentação
+
+## INSERT
+
+- Criação do model de movimentação, com a função de inserir uma movimentação, com os dados submetidos pelo formulário.
+- Usando função date do php com configuração do fuso horário.
+- Nova função no model para listar os dados da tabela t_transacoes do banco de dados.
