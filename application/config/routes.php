@@ -58,5 +58,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 /* Movimentacoes */
 $route['movimentacao/cadastrar']['GET'] = 'MovimentacaoController/formCadastroMovimentacao';
-$route['movimentacao/cadastrar']['POST'] = 'MovimentacaoController/inseriroMovimentacao';
-
+$route['movimentacao/cadastrar']['POST'] = 'MovimentacaoController/inserirMovimentacao';
+$route['movimentacoes']['GET'] = 'MovimentacaoController/listarMovimentacoes';

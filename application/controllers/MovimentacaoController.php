@@ -31,4 +31,12 @@ class MovimentacaoController extends CI_Controller {
             echo 'dados inseridos com sucesso.';
         }
     }
+    
+    public function listarMovimentacoes(){
+        $this->load->model('Movimentacao', 'movimentacao', true);
+        $dados['lista_movimentacoes'] = $this->movimentacao->getMovimentacoes();
+       
+        return $this->load->view('movimentacao/listar_movimentacoes', $dados);
+
+    }
 }
