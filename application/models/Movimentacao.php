@@ -11,8 +11,24 @@ class Movimentacao extends CI_Model {
         return $this->db->get('t_transacao')->result();
     }
 
-    public function excluir($movimentação_id){
-        $this->db->where('id', $movimentação_id);
+    public function excluir($movimentacao_id){
+        $this->db->where('id', $movimentacao_id);
         $this->db->delete('t_transacao');
+    }
+
+    public function buscarPorCodigo($movimentacao_id){
+        $this->db->where('id', $movimentacao_id);
+        return $this->db->get('t_transacao')->row();
+    }
+    
+    public function atualizar($movimentacao_id, $movimentacao){
+        $this->db->where('id', $movimentacao_id);
+        $this->db->update('t_transacao', $movimentacao);
+
+        if($this->db->affected_rows() >0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

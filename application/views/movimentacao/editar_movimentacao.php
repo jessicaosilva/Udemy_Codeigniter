@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Nova movimentação</title>
+    <title>Editar Movimentação</title>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-6 offset-3">
-            <?php echo validation_errors() ?>
-                <form action="cadastrar" method="post">
+            <?= validation_errors(); ?>
+            <?= $this->session->flashdata('edicao-movimentacao'); ?>
+                <form action="<?= base_url("movimentacoes/editar/{$movimentacao->id}")?>" method="post">
                     <div class="form-group">
                         <label>Descrição</label>
-                        <input class="form-control" name="descricao"/>
+                        <input class="form-control" name="descricao" value="<?= $movimentacao->descricao?>"/>
                     </div>
                     <div class="form-group">
                         <label>Valor</label>
-                        <input class="form-control" name="valor"/>
+                        <input class="form-control" name="valor" value="<?= $movimentacao->valor?>"/>
                     </div>
                     <div class="form-group">
                         <label>Tipo</label>
-                        <input class="form-control" name="tipo"/>
+                        <input class="form-control" name="tipo" value="<?= $movimentacao->tipo?>"/>
                     </div>
                     <div class="form-group">
                         <label>Data</label>
-                        <input class="form-control" name="data"/>
+                        <input class="form-control" name="data" value="<?= $movimentacao->data?>"/>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="form-control" class="btn btn-default" value="enviar"/>
+                        <input type="submit" class="form-control" class="btn btn-default" value="Salvar"/>
                     </div>
                 </form>
             </div>

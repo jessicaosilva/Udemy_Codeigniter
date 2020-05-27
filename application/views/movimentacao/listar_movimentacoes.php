@@ -30,6 +30,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url("movimentacoes/excluir/{$movimentacao->id}"); ?>" class="btn btn-danger btn-excluir">Excluir</a>
+                                <a href="<?= base_url("movimentacoes/editar/{$movimentacao->id}"); ?>" class="btn btn-primary btn-editar">Editar</a>
                             </td>
                             <td><?= $movimentacao->id ?></td>
                             <td><?= $movimentacao->descricao ?></td>
