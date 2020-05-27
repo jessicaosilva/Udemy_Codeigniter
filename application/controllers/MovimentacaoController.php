@@ -39,4 +39,10 @@ class MovimentacaoController extends CI_Controller {
         return $this->load->view('movimentacao/listar_movimentacoes', $dados);
 
     }
+
+    public function excluiMovimentacao($movimentacao_id){
+        $this->load->model('Movimentacao', 'movimentacao', true);
+        $this->movimentacao->excluir($movimentacao_id);
+        redirect(base_url('movimentacoes'));
+    }
 }

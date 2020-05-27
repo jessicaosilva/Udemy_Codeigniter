@@ -40,3 +40,14 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 - Nova função no controler 'MovimentacaoController' que chama a função do model para listar.
 - Nova view para exibir os dados encontrados em uma tabela (html table).
 - Criação de uma rota para acessar a lista de movimentações.
+
+## DELETE
+
+- Nova função no model 'Movimentacao' para deletar os dados da tabela t_transacoes do banco de dados.
+- Nova função no controler 'MovimentacaoController' que chama a função do model para deletar.
+- Adicionar botão para exclusão.
+- Configuração no arquivo autoload.php para uso da função base_url.
+- Importar Jquery pela tag 'script'
+- Adicionar arquivo jquery para chamar função de exclusão.
+- Função que confirma a ação de exclusão.
+

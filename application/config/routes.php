@@ -60,3 +60,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['movimentacao/cadastrar']['GET'] = 'MovimentacaoController/formCadastroMovimentacao';
 $route['movimentacao/cadastrar']['POST'] = 'MovimentacaoController/inserirMovimentacao';
 $route['movimentacoes']['GET'] = 'MovimentacaoController/listarMovimentacoes';
+$route['movimentacoes/excluir/(:any)']['GET'] = 'MovimentacaoController/excluiMovimentacao/$1';
