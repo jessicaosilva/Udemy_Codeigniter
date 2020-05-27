@@ -57,7 +57,9 @@ $route['translate_uri_dashes'] = FALSE;
 // Movimentações
 
 /* Movimentacoes */
-$route['movimentacao/cadastrar']['GET'] = 'MovimentacaoController/formCadastroMovimentacao';
-$route['movimentacao/cadastrar']['POST'] = 'MovimentacaoController/inserirMovimentacao';
-$route['movimentacoes']['GET'] = 'MovimentacaoController/listarMovimentacoes';
-$route['movimentacoes/excluir/(:any)']['GET'] = 'MovimentacaoController/excluiMovimentacao/$1';
+$route['movimentacao/cadastrar']['GET']         = 'MovimentacaoController/formCadastroMovimentacao';
+$route['movimentacao/cadastrar']['POST']        = 'MovimentacaoController/inserirMovimentacao';
+$route['movimentacoes']['GET']                  = 'MovimentacaoController/listarMovimentacoes';
+$route['movimentacoes/excluir/(:any)']['GET']   = 'MovimentacaoController/excluiMovimentacao/$1';
+$route['movimentacoes/editar/(:any)']['GET']    = 'MovimentacaoController/editarMovimentacao/$1';
+$route['movimentacoes/editar/(:any)']['POST']   = 'MovimentacaoController/salvarMovimentacao/$1';
