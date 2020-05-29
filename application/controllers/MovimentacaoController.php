@@ -22,16 +22,31 @@ class MovimentacaoController extends CI_Controller {
 
         }else{
             
-
+            $config['upload_path']    = './uploads/comprovantes/';
+            $config['allowed_types']  = 'gif|jpg|png|pdf';
+            $this->upload->initialize($config);
+            
             $data =[
-                'descricao'=> $this->input->post('descricao'),
-                'tipo'     => $this->input->post('tipo'),
-                'valor'    => $this->input->post('valor'),
-                'data'     => $this->input->post('data'),
-                'datahora_cadastro'     => date('Y-m-d H:i:s'),
+                'descricao'           => $this->input->post('descricao'),
+                'tipo'                => $this->input->post('tipo'),
+                'valor'               => $this->input->post('valor'),
+                'data'                => $this->input->post('data'),
+                'datahora_cadastro'   => date('Y-m-d H:i:s'),
             ];
+
+            if(!$this->upload->do_upload('comprovante')){
+                $errors = $this->upload->display_errors();
+                $this->session->set_flashdata('cadastro-movimentacao', $errors);
+                redirect(base_url('movimentacao/cadastrar'));
+
+            }else{
+                $dados_upload = $this->upload->data();
+                $filename = $dados_upload['file_name'];
+                $data['arquivo_comprovante'] = $config['upload_path'] . $filename;
+            }
+
             $this->movimentacao->insert($data);
-            echo 'dados inseridos com sucesso.';
+            redirect(base_url('movimentacoes'));
         }
     }
     
@@ -44,8 +59,20 @@ class MovimentacaoController extends CI_Controller {
     }
 
     public function excluiMovimentacao($movimentacao_id){
+
+        $movimentacao = $this->movimentacao->buscarPorCodigo($movimentacao_id);
+        if(!is_null($movimentacao))
+        {
+            $this->movimentacao->excluir($movimentacao_id);
+            if(!empty($movimentacao->arquivo_comprovante) && !is_null($movimentacao->arquivo_comprovante)){
+                unlink($movimentacao->arquivo_comprovante);
+            }
+            $this->session->set_flashdata('listar-movimentacao', 'Movimentação excluída com sucesso.');
+        }else{
+            $this->session->set_flashdata('listar-movimentacao', 'Não existe esse registro no banco de dados.');
+
+        }
         
-        $this->movimentacao->excluir($movimentacao_id);
         redirect(base_url('movimentacoes'));
     }
     
@@ -64,6 +91,10 @@ class MovimentacaoController extends CI_Controller {
         if($this->form_validation->run()===false){
             $this->editarMovimentacao($movimentacao_id);
         }else{
+            
+            $config['upload_path']    = './uploads/comprovantes/';
+            $config['allowed_types']  = 'gif|jpg|png|pdf';
+            $this->upload->initialize($config);
 
             $movimentacao =[
                 'descricao'=> $this->input->post('descricao'),
@@ -72,9 +103,25 @@ class MovimentacaoController extends CI_Controller {
                 'data'     => $this->input->post('data'),
                 'datahora_ultimaalteracao'=> date('Y-m-d H:i:s'),
             ];
+            if(!empty($_FILES['comprovante']['name']))
+            {
+                if(!$this->upload->do_upload('comprovante'))
+                {
+                    $errors = $this->upload->display_errors();
+                    $this->session->set_flashdata('edicao-movimentacao', $errors);
+                    redirect(base_url("movimentacoes/editar/{$movimentacao_id}"));
+    
+                }else{
+                    $dados_upload = $this->upload->data();
+                    $filename = $dados_upload['file_name'];
+                    $movimentacao['arquivo_comprovante'] = $config['upload_path'] . $filename;
+                }
+            }
+           
 
             $alteracao = $this->movimentacao->atualizar($movimentacao_id, $movimentacao);
-            if($alteracao){
+            if($alteracao)
+            {
                 $this->session->set_flashdata('edicao-movimentacao', 'Dados alterados com sucesso.');
             }else{
                 $this->session->set_flashdata('edicao-movimentacao', 'Erro ao alterar os dados da movimentação.');

@@ -13,7 +13,10 @@
             <div class="col-6 offset-3">
             <?= validation_errors(); ?>
             <?= $this->session->flashdata('edicao-movimentacao'); ?>
-                <form action="<?= base_url("movimentacoes/editar/{$movimentacao->id}")?>" method="post">
+                <form action="<?= base_url("movimentacoes/editar/{$movimentacao->id}")?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <h2>Editar movimentação</h2>
+                    </div>
                     <div class="form-group">
                         <label>Descrição</label>
                         <input class="form-control" name="descricao" value="<?= $movimentacao->descricao?>"/>
@@ -29,6 +32,13 @@
                     <div class="form-group">
                         <label>Data</label>
                         <input class="form-control" name="data" value="<?= $movimentacao->data?>"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Comprovante</label>
+                        <input type="file" class="form-control" name="comprovante"/><br>
+                        <?php if(!empty($movimentacao->arquivo_comprovante)&& !is_null($movimentacao->arquivo_comprovante)){ ?>
+                            <a href="<?= base_url($movimentacao->arquivo_comprovante);?>" target="_blanc" class="btn btn-warning">Ver </a>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="form-control" class="btn btn-default" value="Salvar"/>
