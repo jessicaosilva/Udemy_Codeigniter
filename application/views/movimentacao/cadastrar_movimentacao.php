@@ -11,8 +11,12 @@
     <div class="container">
         <div class="row">
             <div class="col-6 offset-3">
-            <?php echo validation_errors() ?>
-                <form action="cadastrar" method="post">
+            <?= validation_errors(); ?>
+            <?= $this->session->flashdata('cadastro-movimentacao'); ?>
+                <form action="cadastrar" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <h2>Editar movimentação</h2>
+                    </div>
                     <div class="form-group">
                         <label>Descrição</label>
                         <input class="form-control" name="descricao"/>
@@ -28,6 +32,10 @@
                     <div class="form-group">
                         <label>Data</label>
                         <input class="form-control" name="data"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Comprovante</label>
+                        <input type="file" class="form-control" name="comprovante"/><br>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="form-control" class="btn btn-default" value="enviar"/>

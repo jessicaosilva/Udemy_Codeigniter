@@ -60,3 +60,9 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 - Atulização da view com o novo botão de edição.
 - Atulização do autoload.php para evitar chamada de library e helper toda vez que forem necessárias.
 - Uso de mensagens flash data da Session para informar status dos transações no banco de dados.
+
+#### Registro de arquivos
+
+- Manipulação e CRUD de arquivos com o auxílio da library 'upload'.
+- Criação de uma nova coluna na tabela t_transacoes com o caminho do arquivo salvo.
+

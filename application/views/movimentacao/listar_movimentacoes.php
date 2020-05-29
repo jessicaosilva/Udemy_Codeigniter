@@ -14,6 +14,7 @@
         <div class="row">
             <div class="col-lg-10 offset-1">
                 <h1>Movimentações</h1>
+                <?= $this->session->flashdata('listar-movimentacao'); ?>
                 <br><table class="table table-bordered">
                     <thead>
                         <tr>
@@ -23,6 +24,7 @@
                             <th>Tipo</th>
                             <th>Valor</th>
                             <th>Data</th>
+                            <th>Comprovante</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +39,11 @@
                             <td><?= ($movimentacao->tipo == 'S') ? "Saída" : "Entrada" ?></td>
                             <td><?= $movimentacao->valor ?></td>
                             <td><?= $movimentacao->data ?></td>
+                            <td>
+                                <?php if(!empty($movimentacao->arquivo_comprovante)&& !is_null($movimentacao->arquivo_comprovante)){ ?>
+                                <a href="<?= base_url($movimentacao->arquivo_comprovante);?>" target="_blanc" class="btn btn-warning">Ver </a>
+                                <?php } ?>
+                            </td>
                         </tr>
                         <?php } ?>
                     </tbody>
