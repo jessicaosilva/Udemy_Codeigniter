@@ -9,3 +9,11 @@ CREATE TABLE `t_transacao` (
   `datahora_ultimaalteracao` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `t_usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL COMMENT 'Nome',
+  `email` varchar(100) NOT NULL COMMENT 'E-mail',
+  `senha` varchar(100) NOT NULL COMMENT 'Senha',
+  PRIMARY KEY (`id`)
+);
