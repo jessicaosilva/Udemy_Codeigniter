@@ -17,7 +17,7 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 
 - Criação da Controller de Movimentação
 - Criação da View de Movimentação
-- Validação básicas com a library 'form_validation'
+- Validação básica com a library 'form_validation'
 - Criação de rotas para os métodos de Movimentação
 
 ### Banco de dados MySql
@@ -66,3 +66,12 @@ Ao criar o arquivo .htaccess, na raiz do projeto rodar o comando:
 - Manipulação e CRUD de arquivos com o auxílio da library 'upload'.
 - Criação de uma nova coluna na tabela t_transacoes com o caminho do arquivo salvo.
 
+
+### Criação de usuário
+
+- Criação da tabela t_usuario
+- Criação da controller UsuarioController
+- Criação do model Usuario
+- Criação da view usuario/registrar_usuario
+- Validação básica com a library 'form_validation'
+- Rotas para o formulário e cadastro
